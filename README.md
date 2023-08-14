@@ -108,3 +108,55 @@ Your project automatically generates sample data when it is running, which you c
 | 1d700f63-7e12-4a50-a9d7-70adad1d4242 | 5d700f63-7e12-4a50-a9d7-70adad1d423e | VIP      | 80.0  | 15            |
 | 1d700f63-7e12-4a50-a9d7-70adad1d4243 | 5d700f63-7e12-4a50-a9d7-70adad1d423e | Regular  | 40.0  | 50            |
 
+
+# Concert Tickets Database
+
+## Overview
+
+This repository contains a well-structured database designed to manage information about concerts and their associated tickets. The database comprises two main tables: "Concerts" and "Tickets."
+
+## Table Structures
+
+### Concert Table
+
+The "Concert" table stores essential details about various concerts, including their names, dates, and venues.
+
+| Column      | Data Type | Description                       |
+|-------------|-----------|-----------------------------------|
+| id          | UUID      | Unique concert identifier.        |
+| name        | varchar   | Name of the concert.              |
+| date        | Date      | Date of the concert.              |
+| venue       | varchar   | Venue where the concert is held. |
+
+### Ticket Table
+
+The "Ticket" table holds information about available tickets for each concert, including their types, prices, and quantities.
+
+| Column       | Data Type | Description                                        |
+|--------------|-----------|----------------------------------------------------|
+| id           | UUID      | Unique ticket identifier.                          |
+| concert_id   | varchar   | Foreign key referencing the corresponding concert.|
+| type         | varchar   | Type of the ticket (e.g., VIP, Regular).           |
+| price        | Decimal   | Price of the ticket.                              |
+| available_qty | Integer  | Number of tickets available for this type.        |
+
+## Relationship
+
+Each ticket in the "Ticket" table is linked to a specific concert through the "concert_id" foreign key. This establishes a connection between the "Concert" and "Ticket" tables.
+
+## Example Usage
+
+**Scenario:**
+A user wishes to purchase tickets for "Concert A" at "Venue X."
+
+**Steps:**
+1. Query the "Concerts" table using the concert's name or date to retrieve details about "Concert A."
+2. Use the concert's ID from the previous step to query the "Ticket" table. This will display available ticket types, prices, and quantities.
+3. Select a preferred ticket type (e.g., VIP) and proceed with the purchase.
+4. Update the "available_qty" in the "Ticket" table to reflect the reduced availability of the chosen ticket type for "Concert A."
+
+In summary, this database design serves as a valuable tool for efficiently managing concert and ticket data, streamlining processes such as ticket sales and inventory tracking.
+
+
+
+
